@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {getAllPassengers, createPassenger, getPassenger, updatePassenger, deletePassenger}  = require("../controllers/userPassagerController")
+const {getAllPassengers, createPassenger, getPassenger, updatePassenger, deletePassenger}  = require("../controllers/userPassengerController")
 
 
 router.route("/").get(getAllPassengers).post(createPassenger);

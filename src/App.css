@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+
+.body{
+  height: 80vh;
+  background-color:#93B6EB;
+}
+input{
+  background-color: beige;
+  margin-top: 5rem;
+  border-radius: 0 30px 30px 30px;
+  margin-left: auto;
+  max-width: 50rem;
+  min-width: 9rem;
+  height: 4rem;
+  color: black;
+}

@@ -2,9 +2,28 @@
 import '../styles/register.css'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useState } from 'react'
+import Navbar from '../components/Navbar'
+import image1 from '../assets/image-1-accueil.png'
+import FormRegisterPassager from '../components/formRegisterPassager'
 
 function Register(){
+    const [active1, setActive1] = useState("active");
+    const [active2, setActive2] = useState("")
     const navigate = useNavigate()
+    const activate1 = ()=>{
+        if(active1 ===""){
+            setActive1("active");
+            setActive2('');
+        }
+            
+    }
+    const activate2 = ()=>{
+        if(active2 ===""){
+            setActive1("");
+            setActive2("active")
+        }
+    }
     function submitForm(e){
             e.preventDefault()
             let data = Object.fromEntries(new FormData(e.target));
@@ -23,34 +42,25 @@ function Register(){
              .catch(error=>console.log(error))
 
     }
-    
+
     
 
     return(
-        <>
-       
+    <>
+        <Navbar/>
+        <div className="body">
+            <div className='banner'>
+                <span onClick={activate1} className={active1}>PASSAGER</span>
+                <span onClick={activate2} className={active2}>CONDUCTEUR</span>   
+            </div>  
+            <div className='form_all' >
+                    <img src={image1}/>
+                    <FormRegisterPassager/>
 
-            <div className='form1'>
-                <div className="form-container">
-                    <form action="form.php" method="post">
-                        <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input type="text" name="name" id="name" className="form-control"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" name="email" id="email" className="form-control"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="message">Message</label>
-                            <textarea name="message" id="message" className="form-control"/>
-                        </div>  
-                        <button type="submit">S'enregistrer</button>
-                            Compte existant ? <a href="./login">Se connecter</a>
-                    </form>
-                </div>
-            </div>      
-        </>
+                </div> 
+                <button>ENREGISTRER</button>           
+        </div>
+    </>
     )
 }
 export default Register

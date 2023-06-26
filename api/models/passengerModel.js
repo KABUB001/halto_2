@@ -1,7 +1,6 @@
-const uniqueValidator = require('mongoose-unique-validator');
 const mongoose = require("mongoose")
-
-const conductorSchema = mongoose.Schema({
+const uniqueValidator = require('mongoose-unique-validator');
+const passengerSchema = mongoose.Schema({
     name: {
         type: String,
         required: [true, "Please add the conductor name "]
@@ -13,7 +12,7 @@ const conductorSchema = mongoose.Schema({
     email:{
         type: String,
         required: [true, "Please add the conductor email "],
-        unique : [true, "Please change email "]
+        unique : true
     },
     phone: {
         type: String,
@@ -31,6 +30,6 @@ const conductorSchema = mongoose.Schema({
     timestamps: true,
 })
 
-conductorSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model("Conducteur", conductorSchema)
+passengerSchema.plugin(uniqueValidator);
+module.exports = mongoose.model("Passager", passengerSchema)

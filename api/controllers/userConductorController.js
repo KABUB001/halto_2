@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler")
+const bcrypt = require("bcrypt")
 const Conductor = require("../models/conductorModel")
 //@desc Get all conductors
 //@route GET /api/users/conductors
@@ -12,8 +13,11 @@ const getAllConductors = asyncHandler( async(req, res)=>{
 //@route POST /api/users/conductors
 //@access public
 const createConductor = asyncHandler( async (req, res)=>{
-    console.log("The request body is:",req.body);
-    const {name, first_name, email, phone, password, image} = req.body;
+    let password = await bcrypt.hash(req.body.password, 10)
+    console.log("The request body is ok:",req.body);
+    const {name, first_name, email, phone, image} = req.body;
+
+    console.log("The request password is:",password);
     if(!name || !email || !phone || !image || !password || !first_name){
         res.status(400);
         throw new Error("All fields are mandatory !")
@@ -27,6 +31,7 @@ const createConductor = asyncHandler( async (req, res)=>{
         image 
     })
     res.status(201).json(conductors)
+    res.send(conductors)
 })
 
 //@desc Get conductor

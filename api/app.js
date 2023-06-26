@@ -6,11 +6,12 @@ const connectDb = require("./config/dbConnection")
 
 connectDb()
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 app.use("/api/users/passengers", require("./routes/userPassengerRoutes"))
 
 app.use("/api/users/conductors", require("./routes/userConductorRoutes"))
 
 app.use(errorHandler)
-const port = process.env.PORT || 3010
-app.listen(port,()=> console.log("binvenue au port",`${port}` ))
+const port = process.env.PORT || 5000 
+app.listen(port,()=> console.log("binvenue"))

@@ -26,3 +26,21 @@ body {
     background-color: #007bff;
     color: white;
   }
+  .banner{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 2rem;
+  }
+  .banner span{
+    margin-top: 2rem;
+    cursor: pointer;
+  }
+  .active{
+    text-decoration: underline;
+    background-color: #EB9617;
+  }
+  .form_all{
+    margin-top: 10rem;
+    display: flex;
+  }
