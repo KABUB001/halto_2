@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import Login from './pages/login.jsx'
 import Register from './pages/register'
+import Trajet from './pages/trajet'
 import './App.css'
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path={'/'} element={<Navbar/>}/>
+        <Route path={'/'} element={<Trajet/>}/>
         <Route path={'/login'} element={<Login/>}/>
         <Route path={'/register'} element={<Register/>}/>
       </Routes>     
